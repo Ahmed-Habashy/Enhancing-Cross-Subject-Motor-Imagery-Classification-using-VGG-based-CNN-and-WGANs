@@ -1,9 +1,3 @@
-"""
-Created on Thu Mar 10 09:29:30 2022
-
-@author: ahmed
-"""
-# %% 
 import numpy as np
 import scipy.io
 #from braindecode.datasets import MOABBDataset
