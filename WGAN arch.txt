@@ -1,0 +1,72 @@
+Critic Arch: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 16, 16, 32)        544       
+                                                                 
+ batch_normalization (BatchN  (None, 16, 16, 32)       128       
+ ormalization)                                                   
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 16, 16, 32)        0         
+                                                                 
+ conv2d_1 (Conv2D)           (None, 8, 8, 64)          32832     
+                                                                 
+ batch_normalization_1 (Batc  (None, 8, 8, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 8, 8, 64)          0         
+                                                                 
+ flatten (Flatten)           (None, 4096)              0         
+                                                                 
+ dense (Dense)               (None, 1)                 4097      
+                                                                 
+=================================================================
+Total params: 37,857
+Trainable params: 37,665
+Non-trainable params: 192
+_________________________________________________________________
+
+
+ Generator Arch: 
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_1 (Dense)             (None, 1024)              205824    
+                                                                 
+ leaky_re_lu_2 (LeakyReLU)   (None, 1024)              0         
+                                                                 
+ reshape (Reshape)           (None, 4, 4, 64)          0         
+                                                                 
+ conv2d_transpose (Conv2DTra  (None, 8, 8, 128)        131200    
+ nspose)                                                         
+                                                                 
+ batch_normalization_2 (Batc  (None, 8, 8, 128)        512       
+ hNormalization)                                                 
+                                                                 
+ leaky_re_lu_3 (LeakyReLU)   (None, 8, 8, 128)         0         
+                                                                 
+ conv2d_transpose_1 (Conv2DT  (None, 16, 16, 128)      262272    
+ ranspose)                                                       
+                                                                 
+ batch_normalization_3 (Batc  (None, 16, 16, 128)      512       
+ hNormalization)                                                 
+                                                                 
+ leaky_re_lu_4 (LeakyReLU)   (None, 16, 16, 128)       0         
+                                                                 
+ conv2d_transpose_2 (Conv2DT  (None, 32, 32, 32)       65568     
+ ranspose)                                                       
+                                                                 
+ batch_normalization_4 (Batc  (None, 32, 32, 32)       128       
+ hNormalization)                                                 
+                                                                 
+ leaky_re_lu_5 (LeakyReLU)   (None, 32, 32, 32)        0         
+                                                                 
+ conv2d_2 (Conv2D)           (None, 32, 32, 1)         513       
+                                                                 
+=================================================================
+Total params: 666,529
+Trainable params: 665,953
+Non-trainable params: 576
+_________________________________________________________________
