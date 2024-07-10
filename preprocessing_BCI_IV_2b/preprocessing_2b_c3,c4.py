@@ -57,9 +57,6 @@ x_test, y_test = utilss.load_preprocess_data(grazb_data_test, True, LOWCUT,
                                               AXIS, FS, T = False)
 
 def MI_4sec_data(x,y):
-    # sub_data = np.rollaxis(x, 2, 1)
-    # samples_win = 2*FS      # 2sec window
-    # samples_str = 1125   # begining at second 4.5
     samples_win = 4*FS     # 4sec window
     samples_str = 1000   # begining at second 4
     
@@ -87,7 +84,6 @@ def get_concat_v(im1, im2):
     dst = Image.new('RGB', (im1.width, im1.height + im2.height )) # 'L' for gray scale / 'RGB'
     dst.paste(im1, (0, 0))
     dst.paste(im2, (0, im1.height))
-    # dst.paste(im3, (0, im1.height+im2.height))
 
     return dst
 #%%
@@ -115,10 +111,8 @@ def stft_data(X, window_size=256, draw=False, cl = 1):
     f, t, Zxx = signal.stft(X[0,:,0], fs=fs,  nperseg=window_size, noverlap=1)
     num_freq= f.shape[0]
     num_time= t.shape[0]
-    #Z_mean =  np.empty((Zxx.shape[0],Zxx.shape[1]))
     ch_stft= np.empty((int(num_trials), int(num_freq),int(num_time)))
-    
-    sel_channels = (0,2)  # c3,cz,c4
+    sel_channels = (0,2)  
 
     for i in range(num_trials):
         for j in sel_channels:   
