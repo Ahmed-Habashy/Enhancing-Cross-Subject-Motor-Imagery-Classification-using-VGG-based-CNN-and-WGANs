@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Sat Mar  4 20:15:13 2023
 @author: ahmed
