@@ -18,11 +18,11 @@ The preprocessing steps involve filtering the EEG data, extracting MI task segme
 
 #### WGAN Training
 
-The WGAN is trained to generate synthetic EEG spectrum images that are similar to the real data. The WGAN architecture and training process are implemented in the `func_cnn_Wgan.docx` script.
+The WGAN is trained to generate synthetic EEG spectrum images that are similar to the real data. The WGAN architecture and training process are implemented in the `func_cnn_Wgan.py` script.
 
 #### CNN Training and Testing
 
-The modified VGG-based CNN classifier is trained on the augmented dataset (real and synthetic images). The training and testing process is implemented in the `Gray cross-WGAN-CNN.docx` script. The script also includes the implementation of two other CNN classifiers (VGG-based CNN and Audio-spectrum CNN) for comparison.
+The modified VGG-based CNN classifier is trained on the augmented dataset (real and synthetic images). The training and testing process is implemented in the `Gray cross-WGAN-CNN.py` script. The script also includes the implementation of two other CNN classifiers (VGG-based CNN and Audio-spectrum CNN) for comparison.
 
 #### Evaluation
 
