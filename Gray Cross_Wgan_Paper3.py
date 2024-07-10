@@ -12,8 +12,6 @@ from datetime import datetime
 
 subjects  = [1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 subjects_s  = [ 5 ]
-# subjects = [ 'sub_B01', 'sub_B02' , 'sub_B03' , 'sub_B04', 'sub_B05' , 'sub_B06' , 'sub_B07' , 'sub_B08', 'sub_B09' ]   
-# subjects_s = [   'sub_B08'  ]    
 
 seed = 7
 # defining the input images size    
@@ -35,11 +33,7 @@ for subject in subjects_s:
     # 2-channels only :
     img_folder =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\sub_[{}]'.format(subject) 
     img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\eval\sub_[{}]'.format(subject) 
-    # Dataset 2B:
-    # img_folder =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\BCI_IV_2b GAN\spectrogram\gray\{}_g'.format(subject) 
-    # img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\BCI_IV_2b GAN\spectrogram\gray\Test\{}_gt'.format(subject) 
-   
-    # 2-channels only (C3-C4) 
+
  
     x_tr,y_tr = create_dataset(img_folder)
     x_ev,y_ev = create_dataset(img_folder_test)
@@ -71,10 +65,7 @@ for subject in subjects_s:
         # 2-channels only:
         cr_img =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\sub_[{}]'.format(sub) 
         cr_img_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\eval\sub_[{}]'.format(sub)       
-        # Dataset 2B:
-        # cr_img =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\BCI_IV_2b GAN\spectrogram\gray\{}_g'.format(sub) 
-        # cr_img_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\BCI_IV_2b GAN\spectrogram\gray\Test\{}_gt'.format(sub)   
-        #     
+   
         if (sub==subject):
             continue
 
@@ -101,53 +92,53 @@ for subject in subjects_s:
 #%% ============================= GAN Training =====================================
     # # load image data cl 1 
     latent_dim = 100
-    # critic = define_critic()
-    # generator = define_generator(latent_dim)
-    # gan_model = define_gan(generator, critic)
-    # # train model
-    # cl = 1
-    # print (f"Wgan class {cl} Training data:{loso1.shape} " )
-    # start = datetime.now()
-    # epochs1 = train(subject,cl, generator, critic, gan_model, loso1, latent_dim)
-    # duration = datetime.now() - start
-    # print("Training completed in time: ", duration)
-    # # load image data cl 2 
-    # critic = define_critic()
-    # generator = define_generator(latent_dim)
-    # gan_model = define_gan(generator, critic)
-    # # train model
-    # cl = 2
-    # print (f"Wgan class {cl} Training data:{loso1.shape} " )
-    # start = datetime.now()
-    # epochs2 = train(subject,cl,generator, critic, gan_model, loso2, latent_dim)  
-    # duration = datetime.now() - start
-    # print("Training completed in time: ", duration)
+    critic = define_critic()
+    generator = define_generator(latent_dim)
+    gan_model = define_gan(generator, critic)
+    # train model
+    cl = 1
+    print (f"Wgan class {cl} Training data:{loso1.shape} " )
+    start = datetime.now()
+    epochs1 = train(subject,cl, generator, critic, gan_model, loso1, latent_dim)
+    duration = datetime.now() - start
+    print("Training completed in time: ", duration)
+    # load image data cl 2 
+    critic = define_critic()
+    generator = define_generator(latent_dim)
+    gan_model = define_gan(generator, critic)
+    # train model
+    cl = 2
+    print (f"Wgan class {cl} Training data:{loso1.shape} " )
+    start = datetime.now()
+    epochs2 = train(subject,cl,generator, critic, gan_model, loso2, latent_dim)  
+    duration = datetime.now() - start
+    print("Training completed in time: ", duration)
 #%%========================== Generating GAN Images =========================== 
-    # epochs1 = 1600
-    # epochs2 = 1800
-    # cl=1   
-    # print("\n Generating atrifitial images class  ", cl)
-    # # load model
-    # model1 = load_model('cross/target_{} GAN_results_mix/models/GAN_cl{}_{}.h5'.format(subject, cl, epochs1))
-    # # generate images
-    # latent_points1 = generate_latent_points(latent_dim,  int ((len(loso1)) * Ad_times) )   
-    # # generate images
-    # X_gan_lat1 = model1.predict(latent_points1)    
-    # # plot the result
-    # create_GAN_plot(X_gan_lat1,1,subject)
+    epochs1 = 1600
+    epochs2 = 1800
+    cl=1   
+    print("\n Generating atrifitial images class  ", cl)
+    # load model
+    model1 = load_model('cross/target_{} GAN_results_mix/models/GAN_cl{}_{}.h5'.format(subject, cl, epochs1))
+    # generate images
+    latent_points1 = generate_latent_points(latent_dim,  int ((len(loso1)) * Ad_times) )   
+    # generate images
+    X_gan_lat1 = model1.predict(latent_points1)    
+    # plot the result
+    create_GAN_plot(X_gan_lat1,1,subject)
     
-    # cl=2
-    # tf.random.set_seed(seed)
-    # np.random.seed(seed)
-    # print("\n Generating atrifitial images class  ", cl)
+    cl=2
+    tf.random.set_seed(seed)
+    np.random.seed(seed)
+    print("\n Generating atrifitial images class  ", cl)
 
-    # model2 = load_model('cross/target_{} GAN_results_mix/models/GAN_cl{}_{}.h5'.format(subject, cl, epochs2))
-    # # generate images
-    # latent_points2 = generate_latent_points(latent_dim, int ((len(loso2)) * Ad_times))
-    # # generate images
-    # X_gan_lat2 = model2.predict(latent_points2)    
-    # # plot the result
-    # create_GAN_plot(X_gan_lat2,2,subject)
+    model2 = load_model('cross/target_{} GAN_results_mix/models/GAN_cl{}_{}.h5'.format(subject, cl, epochs2))
+    # generate images
+    latent_points2 = generate_latent_points(latent_dim, int ((len(loso2)) * Ad_times))
+    # generate images
+    X_gan_lat2 = model2.predict(latent_points2)    
+    # plot the result
+    create_GAN_plot(X_gan_lat2,2,subject)
     #%% ============================= Collect all loso and yloso arrays ============================
 
     loso_list = [globals()[f'loso{val}'] for val in unique_values]
@@ -166,10 +157,6 @@ for subject in subjects_s:
     x_ev2,y_ev2 = x_ev[y_ev==2], y_ev[y_ev==2]  
     x_ev = np.concatenate((x_ev1, x_ev2), axis=0)   
     y_ev = np.concatenate((y_ev1, y_ev2), axis=0)   
-    # x_ev1,y_ev1 = x0[y0==1], y0[y0==1]
-    # x_ev2,y_ev2 = x0[y0==2], y0[y0==2]  
-    # x_ev = np.concatenate((x_ev1, x_ev2), axis=0)   
-    # y_ev = np.concatenate((y_ev1, y_ev2), axis=0)    
     #%% ========== Cross GAN Data ========
     print ("\n WGAN sub:",subject)
     GAN_data= r'cross/target_{0} GAN_results_mix/GAN_dataset'.format(subject)      
@@ -180,38 +167,8 @@ for subject in subjects_s:
     print(f'y_tr after WGAN shape: {y_tr.shape}')
 #%% ================================== CNN training =================================
     start = datetime.now()
-    # model_training(x_tr, y_tr, x_ev, y_ev,'cross/cnn_models/2ch/sub_{}_zero_cr_modCNN_.h5'.format(subject),
-    #                 Mod_cnn2(), '{}_CNN2 Model accuracy'.format(subject), cnn_epochs, cnn_batch_size)     
     model_training(x_tr, y_tr, x_ev, y_ev,'cross/cnn_models/2ch/sub_{}_zero_cr_wgan_modCNN_.h5'.format(subject),
                     Mod_cnn2(), '{}_CNN2 Model accuracy'.format(subject), cnn_epochs, cnn_batch_size)     
 
     duration = datetime.now() - start
     print("Training completed in time: ", duration)
-#%% test
-def average_acc ():
-    acc_scores = list()     
-    for sub in subjects:
-        # 3 Ch or 2 ch:
-        img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\eval\sub_[{}]'.format(sub) 
-             
-        x_eval,y_eval = create_dataset(img_folder_test)
-        
-        # model = load_model('cross/cnn_models/2ch/sub_{}_zero_cr_CNN3.h5'.format( sub))  # "Paper 3 modified CNN + WGAN" 
-        model = load_model('cross/cnn_models/2ch/sub_{}_zero_cr_wgan_modCNN.h5'.format( sub))  # "Paper 3 modified CNN + WGAN" 
-        
-        # Adject EV data for 2-classes problem
-        x_eval1,y_eval1 = x_eval[y_eval==1], y_eval[y_eval==1]
-        x_eval2,y_eval2 = x_eval[y_eval==2], y_eval[y_eval==2]  
-        x_eval = np.concatenate((x_eval1, x_eval2), axis=0)   
-        y_eval = np.concatenate((y_eval1, y_eval2), axis=0)  
-        _, test_acc= model.evaluate(x_eval,y_eval,verbose=0)
-        print('Test {}: '.format( sub),test_acc)
-        acc_scores.append(test_acc)
-    print('\n >>>> Accuracy: mean={} std={}, n={}' .format ( mean(acc_scores)*100
-                                                                        , std(acc_scores)*100, len(acc_scores)))
-average_acc()
-
-# model = load_model('sub_ind/GAN_CNN/{}_5%_GAN_2_CNN3_{}.h5'.format( subject,   nfolds))
-# _, test_acc= model.evaluate(x_ev, y_ev,verbose=0)
-# print('CNN3 Test: ',nfolds,' fold Accuracy',test_acc)
-
