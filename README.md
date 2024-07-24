@@ -1,7 +1,5 @@
 # Enhancing-Cross-Subject-Motor-Imagery-Classification-using-VGG-based-CNN-and-WGANs
 
-### README
-
 This repository contains the code and data for the paper "Toward Calibration-Free Motor Imagery Brain-Computer Interfaces: A VGG-based Convolutional Neural Network and WGAN Approach"by A. G. Habashi, Ahmed M. Azab, Seif Eldawlatly, and Gamal M. Aly. The paper proposes a novel framework for cross-subject motor imagery (MI) classification using electroencephalogram (EEG) signals. The framework employs a Wasserstein Generative Adversarial Network (WGAN) for data augmentation and a modified VGG-based Convolutional Neural Network (CNN) for classification.
 
 #### Data
