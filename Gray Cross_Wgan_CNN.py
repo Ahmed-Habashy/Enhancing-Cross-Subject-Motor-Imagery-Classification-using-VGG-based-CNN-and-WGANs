@@ -30,8 +30,8 @@ for subject in subjects_s:
     # img_folder =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\sub_[{}]'.format(subject) 
     # img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\eval\sub_[{}]'.format(subject) 
     # 2-channels only :
-    img_folder =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\sub_[{}]'.format(subject) 
-    img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\eval\sub_[{}]'.format(subject) 
+    img_folder =r'\2ch\sub_[{}]'.format(subject) 
+    img_folder_test =r'\2ch\eval\sub_[{}]'.format(subject) 
 
  
     x_tr,y_tr = create_dataset(img_folder)
@@ -59,11 +59,11 @@ for subject in subjects_s:
     #%% =============== Cross subject data =================================
     for sub in subjects:
         # 3-channels:
-        # cr_img =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\sub_[{}]'.format(sub) 
-        # cr_img_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\eval\sub_[{}]'.format(sub) 
+        # cr_img =r'\sub_[{}]'.format(sub) 
+        # cr_img_test =r'\eval\sub_[{}]'.format(sub) 
         # 2-channels only:
-        cr_img =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\sub_[{}]'.format(sub) 
-        cr_img_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\2ch\eval\sub_[{}]'.format(sub)       
+        cr_img =r'\2ch\sub_[{}]'.format(sub) 
+        cr_img_test =r'\2ch\eval\sub_[{}]'.format(sub)       
    
         if (sub==subject):
             continue
@@ -171,3 +171,4 @@ for subject in subjects_s:
 
     duration = datetime.now() - start
     print("Training completed in time: ", duration)
+
