@@ -27,8 +27,8 @@ from func_cnn_Wgan import *
 #%%   ============================== Data Loading ============================= 
 for subject in subjects_s:
     # 3-channels (C3- Cz- C4):
-    # img_folder =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\sub_[{}]'.format(subject) 
-    # img_folder_test =r'D:\PhD Ain Shams\Dr Seif\GANs\python_ex\IV_2a_CNN_WGAN\spectrogram\gray\3ch\eval\sub_[{}]'.format(subject) 
+    # img_folder =r'\3ch\sub_[{}]'.format(subject) 
+    # img_folder_test =r'\3ch\eval\sub_[{}]'.format(subject) 
     # 2-channels only :
     img_folder =r'\2ch\sub_[{}]'.format(subject) 
     img_folder_test =r'\2ch\eval\sub_[{}]'.format(subject) 
@@ -171,4 +171,5 @@ for subject in subjects_s:
 
     duration = datetime.now() - start
     print("Training completed in time: ", duration)
+
 
